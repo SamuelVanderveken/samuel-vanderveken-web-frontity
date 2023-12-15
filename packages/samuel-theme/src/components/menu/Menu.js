@@ -14,6 +14,8 @@ const Menu = ({ state, actions, children }) => {
   const [pageId, setSetPageId] = useState([]);
   // const location = useLocation();
 
+  console.log("hey menu");
+
   useEffect(() => {
     const url = state.router.link?.split("/").filter((item) => item !== "");
     setCurrentUrl(url);
