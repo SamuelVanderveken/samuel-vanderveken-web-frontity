@@ -1,0 +1,253 @@
+.Wrap {
+  margin: 0px 10px;
+}
+
+.WrapMenuView {
+  display: flex;
+  flex-direction: column;
+  padding: 30px 10px;
+
+  /* position: relative; */
+}
+
+/* .WrapMenuView::before {
+  content: '';
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+  z-index: -1;
+  background: url('../assets/close.png') 0 0 repeat;
+  transform: rotate(30deg);
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  opacity: 0.5;
+} */
+
+.View {
+  width: 100%;
+  padding: 40px 35px 30px;
+}
+
+#content {
+  zoom: 1;
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+}
+#content:before,
+#content:after {
+  content: "";
+  display: table;
+}
+#content:after {
+  clear: both;
+}
+#content .work p,
+#content .work li {
+  float: left;
+}
+#content .work p .img_wrapper,
+#content .work li .img_wrapper {
+  margin: 0px 12px 10px 0px;
+}
+#content .work p img,
+#content .work li img {
+  margin: 0px 12px 10px 0px;
+  width: 100%;
+  height: auto;
+}
+#content .work p img:hover,
+#content .work p .wp-caption-text,
+#content .work li .wp-caption-text,
+#content .work p ul li,
+#content .work li ul li {
+  display: none;
+}
+#content .wpContent p {
+  float: none;
+}
+#content h2 {
+  margin: 12px 0px;
+}
+#content h2:first-of-type {
+  margin: 0px 0px 12px;
+}
+#content p {
+  padding: 0;
+  margin: 0;
+}
+#content #cv ul {
+  zoom: 1;
+  margin-bottom: 20px;
+}
+#content #cv ul:before,
+#content #cv ul:after {
+  content: "";
+  display: table;
+}
+#content #cv ul:after {
+  clear: both;
+}
+#content #cv ul:before,
+#content #cv ul:after {
+  content: "";
+  display: table;
+}
+#content #cv ul:after {
+  clear: both;
+}
+#content #cv ul li {
+  display: block;
+  width: 100%;
+  float: left;
+  position: relative;
+}
+#content #cv ul li ul {
+  padding-left: 39px;
+  margin-bottom: 0px;
+}
+#content #cv .year {
+  zoom: 1;
+  position: relative;
+  left: 0;
+  top: 0;
+  display: inline-block;
+  width: 40px;
+  height: auto;
+  /* float: left; */
+  /* text-align: center; */
+  padding-right: 20px;
+}
+#content #cv .year:before,
+#content #cv .year:after {
+  content: "";
+  display: table;
+}
+#content #cv .year:after {
+  clear: both;
+}
+#content #cv .year:before,
+#content #cv .year:after {
+  content: "";
+  display: table;
+}
+#content #cv .year:after {
+  clear: both;
+}
+#content #cv .cvItem {
+  display: block;
+  float: left;
+}
+#content #contact {
+  font-style: italic;
+}
+#content #contact h2,
+#content #contact ul {
+  font-weight: normal;
+  margin-bottom: 20px;
+}
+#content #contact .gegevens {
+  zoom: 1;
+  position: relative;
+  left: 0;
+  top: 0;
+  display: inline-block;
+  width: 80px;
+  height: auto;
+  /* float: left; */
+  padding-right: 20px;
+}
+#content #contact .gegevens:before,
+#content #contact .gegevens:after {
+  content: "";
+  display: table;
+}
+#content #contact .gegevens:after {
+  clear: both;
+}
+#content #contact .gegevens:before,
+#content #contact .gegevens:after {
+  content: "";
+  display: table;
+}
+#content #contact .gegevens:after {
+  clear: both;
+}
+#content #contact form {
+  display: block;
+  max-width: 400px;
+}
+#content #contact form input,
+#content #contact form label,
+#content #contact form textarea {
+  width: 100%;
+  display: block;
+}
+#content #contact form input,
+#content #contact form textarea {
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  border: 1px solid #949494;
+  outline: none;
+}
+#content #contact form input:focus,
+#content #contact form textarea:focus {
+  background-color: white;
+  border: 1px solid #2e2e2e;
+}
+#content #contact form .wpcf7-submit,
+#content #contact form #mc-embedded-subscribe {
+  background: none;
+  font-size: 14px;
+  /* font-family: meta; */
+  font-family: sans-serif;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  text-align: left;
+  font-style: italic;
+}
+#content #contact form .wpcf7-submit:hover,
+#content #contact form #mc-embedded-subscribe:hover {
+  cursor: pointer;
+}
+#content #contact form #mc-embedded-subscribe {
+  padding: 5px 1px;
+}
+#content #contact form .mce_inline_error {
+  background: none;
+  color: black;
+  border-bottom: 2px solid red;
+}
+#content .fotoView.fullScreen {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: rgba(200, 155, 255, 0.5);
+  z-index: 9;
+}
+
+#news img {
+  width: 100%;
+  height: auto;
+  max-width: 700px;
+}
+
+@media screen and (min-width: 720px) {
+  .Wrap {
+    position: relative;
+    margin: 0px 30px;
+    max-width: 1200px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+}
+
+@media screen and (min-width: 1224px) {
+}
