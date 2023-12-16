@@ -1,7 +1,9 @@
-export const baseUrl =
-  process.env.NODE_ENV === "production"
-    ? `https://samuelvanderveken.com`
-    : `http://localhost:30004`;
+// export const baseUrl =
+//   process.env.NODE_ENV === "production"
+//     ? `https://samuelvanderveken.com`
+//     : `http://localhost:30004`;
+
+export const baseUrl = `https://samuelvanderveken.com`;
 
 const settings = {
   name: "samuel-website",
@@ -51,11 +53,11 @@ const settings = {
             //   endpoint: "expos",
             //   archive: "/expos",
             // },
-            {
-              type: "expo",
-              endpoint: "/expos/:year/:slug",
-              archive: "/expos/:year/:slug",
-            },
+            // {
+            //   type: "expo",
+            //   endpoint: "/expos/:year/:slug",
+            //   archive: "/expos/:year/:slug",
+            // },
           ],
           homepage: "/home",
           postsPage: "/samuel",
