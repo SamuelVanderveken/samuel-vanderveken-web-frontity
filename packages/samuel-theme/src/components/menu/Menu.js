@@ -61,7 +61,7 @@ const Menu = ({ state, actions, children }) => {
       const doesCategoryExcist = state.source.data[
         "all-categories/"
       ].items.find((item) => item.slug == i.toString());
-
+      console.log(i, i - 2008);
       if (doesCategoryExcist)
         sortedByYear[i - 2008] = {
           year: i,
@@ -70,7 +70,7 @@ const Menu = ({ state, actions, children }) => {
           data: [],
         };
     }
-    sortedByYear = sortedByYear.sort((a, b) => (a.year < b.year ? 1 : -1));
+    // sortedByYear = sortedByYear.sort((a, b) => (a.year < b.year ? 1 : -1));
     setMenuItemsByYear(sortedByYear);
   }, []);
 
