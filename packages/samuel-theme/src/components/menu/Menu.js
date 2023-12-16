@@ -70,7 +70,7 @@ const Menu = ({ state, actions, children }) => {
           data: [],
         };
     }
-    // sortedByYear = sortedByYear.sort((a, b) => (a.year < b.year ? 1 : -1));
+    sortedByYear = sortedByYear.sort((a, b) => (a.year < b.year ? 1 : -1));
     setMenuItemsByYear(sortedByYear);
   }, []);
 
