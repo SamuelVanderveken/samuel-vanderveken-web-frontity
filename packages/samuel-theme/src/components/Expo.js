@@ -157,15 +157,6 @@ const SkeletonLoading = keyframes`
   }
 `;
 
-const rotate = keyframes`
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-`;
-
 const ExpoWrap = styled.div`
   .skeleton {
     animation: ${SkeletonLoading} 1s linear infinite alternate;

@@ -14,8 +14,6 @@ const Menu = ({ state, actions, children }) => {
   const [pageId, setSetPageId] = useState([]);
   // const location = useLocation();
 
-  console.log("hey menu");
-
   useEffect(() => {
     const url = state.router.link?.split("/").filter((item) => item !== "");
     setCurrentUrl(url);
@@ -72,7 +70,8 @@ const Menu = ({ state, actions, children }) => {
           data: [],
         };
     }
-    setMenuItemsByYear(sortedByYear.sort((a, b) => a.year < b.year));
+    sortedByYear = sortedByYear.sort((a, b) => (a.year < b.year ? 1 : -1));
+    setMenuItemsByYear(sortedByYear);
   }, []);
 
   const renderExpos = () => {

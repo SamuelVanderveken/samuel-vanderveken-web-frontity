@@ -150,8 +150,8 @@ const ImageViewer = ({
           className={`carousel-slot ${currentIndex === i ? "active" : ""}`}
           // style={{ order: getOrder(i) }}
         >
-          <OverlayButton className="Close" onClick={onClose} />
           <Content>
+            <OverlayButton className="Close" onClick={onClose} />
             <ImageWrap>
               <OverlayButton
                 className={"LeftArrow"}
@@ -275,7 +275,7 @@ const Content = styled.div`
   align-items: center;
 
   @media screen and (min-width: 1024px) {
-    width: auto;
+    // width: auto;
   }
 `;
 
