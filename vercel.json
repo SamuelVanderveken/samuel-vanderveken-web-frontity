@@ -5,12 +5,5 @@
       "src": "package.json",
       "use": "@frontity/now"
     }
-  ],
-  "redirects": [
-    {
-      "source": "https://samuel-vanderveken-web-frontity-topaz.vercel.app",
-      "destination": "https://samuelvanderveken.com",
-      "permanent": true
-    }
   ]
 }
