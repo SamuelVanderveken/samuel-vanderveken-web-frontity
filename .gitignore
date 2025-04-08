@@ -58,3 +58,6 @@ macOS .DS_Store files
 build
 
 .vercel
+
+# disable for now 
+.npmrc 
