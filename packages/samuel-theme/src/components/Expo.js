@@ -15,8 +15,13 @@ const Expo = ({ item, isOpen, libraries, state, actions }) => {
   useEffect(() => {
     // document.body.classList.remove("smooth-scroll");
     const slug = item.slug;
+    // setImages(
+    //   state.theme.articles.filter((article) =>
+    //     article.categories.find((category) => slug === category.slug)
+    //   )
+    // );
     setImages(
-      state.theme.articles.filter((article) =>
+      state.theme.images.filter((article) =>
         article.categories.find((category) => slug === category.slug)
       )
     );

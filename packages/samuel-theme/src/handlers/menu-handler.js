@@ -10,52 +10,49 @@ const MenuHandler = {
       endpoint: "/samuel/v1/get",
     });
     const data = await res.json();
-    state.theme.articles = data.articles;
-    state.theme.images = data.images;
+    // state.theme.articles = data.articles;
 
-    //append to state
-    // const expos = state.source.data[link];
-    // Object.assign(expos, {
-    //   items: data.items,
-    //   isExpo: true,
-    // });
+    const thisYear = new Date().getFullYear();
+    let sortedByYear = new Array();
 
-    // const thisYear = new Date().getFullYear();
+    for (let i = thisYear; i >= 2008; --i) {
+      const doesCategoryExcist = state.source.data[
+        "all-categories/"
+      ].items?.find((item) => item.slug == i.toString());
 
-    // const getExposByYear = async (i) => {
-    //   await actions.source.fetch(`/expos/${i}/`);
+      if (doesCategoryExcist)
+        sortedByYear[i - 2008] = {
+          year: i,
+          link: `/expos/${i}/`,
+          items: [],
+          data: [],
+        };
+    }
 
-    //   const categoryData = state.source.get(`/expos/${i}/`);
-    //   const category = state.source.category[categoryData.id];
-    //   const posts = categoryData.items?.map(
-    //     ({ type, id }) => state.source[type][id]
-    //   );
+    sortedByYear = sortedByYear.sort((a, b) => (a.year < b.year ? 1 : -1));
+    state.theme.menu = sortedByYear;
 
-    //   return {
-    //     year: i,
-    //     link: category?.link,
-    //     items: categoryData?.items,
-    //     data: posts,
-    //   };
-    // };
+    const years = sortedByYear.map((year) => year.year);
 
-    // const fn = async () => {
-    //   let sortedByYear = [];
-    //   for (let i = thisYear; i >= 2008; --i) {
-    //     let yearExpos = await getExposByYear(i);
-    //     sortedByYear[i - 2008] = JSON.parse(JSON.stringify(yearExpos));
-    //   }
-    //   // sort
-    //   sortedByYear.sort((a, b) => a.year < b.year);
-    //   // remove empty slots
-    //   sortedByYear = sortedByYear.filter((item) => {
-    //     return item.items && item.items.length > 0;
-    //   });
-    //   // setMenuItemsByYear(sortedByYear);
+    state.theme.images = data.articles.filter((article) =>
+      article.categories?.find((category) => {
+        return !years?.find((year) => year === parseInt(category.slug));
+      })
+    );
 
-    //   state.theme.menu = sortedByYear;
-    // };
-    // fn();
+    const foundPortfolioPage = data.articles?.find(
+      (article) => article.slug === "portfolio-download"
+    );
+
+    if (foundPortfolioPage) {
+      var regex = /<a.*?href="(.*?)"/;
+      var src = regex.exec(foundPortfolioPage.content)[1];
+      if (src) {
+        state.theme.portfolioLink = src;
+      }
+    }
+
+    // console.log("articles", data.articles);
   },
 };
 

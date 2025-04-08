@@ -21,7 +21,7 @@ import allCategoriesHandler from "./handlers/category-handler";
 const Theme = () => {
   return (
     <>
-      {/* <HtmlHead /> */}
+      <HtmlHead />
       <Global
         styles={css`
           * {
@@ -239,12 +239,13 @@ export default {
   },
   state: {
     theme: {
-      isUrlVisible: false,
-      red: false,
-      articles: [], // array of articles
+      // isUrlVisible: false,
+      // red: false,
+      // articles: [], // array of articles
       images: [], // array of ids
       menu: [], // array of menu items per year
       options: [],
+      portfolioLink: "",
     },
   },
   actions: {
@@ -261,45 +262,14 @@ export default {
       beforeSSR: async ({ actions, state }) => {
         await Promise.all([
           actions.source.fetch("/getoptions/"),
-          actions.source.fetch("/getimages/"),
           actions.source.fetch("all-categories"),
+          actions.source.fetch("/getimages/"),
         ]);
-
-        // const thisYear = new Date().getFullYear();
-
-        // const getExposByYear = async (i) => {
-        //   await actions.source.fetch(`/expos/${i}/`);
-
-        //   const categoryData = state.source.get(`/expos/${i}/`);
-        //   const category = state.source.category[categoryData.id];
-        //   const posts = categoryData.items?.map(
-        //     ({ type, id }) => state.source[type][id]
-        //   );
-
-        //   return {
-        //     year: i,
-        //     link: category?.link,
-        //     items: categoryData?.items,
-        //     data: posts,
-        //   };
-        // };
-
-        // const fn = async () => {
-        //   let sortedByYear = [];
-        //   for (let i = thisYear; i >= 2008; --i) {
-        //     let yearExpos = await getExposByYear(i);
-        //     sortedByYear[i - 2008] = JSON.parse(JSON.stringify(yearExpos));
-        //   }
-        //   // sort
-        //   sortedByYear.sort((a, b) => a.year < b.year);
-        //   // remove empty slots
-        //   sortedByYear = sortedByYear.filter((item) => {
-        //     return item.items && item.items.length > 0;
-        //   });
-        //   state.theme.menu = sortedByYear;
-        //   console.log(sortedByYear);
-        // };
-        // fn();
+        // console.log("menu", state.theme.menu);
+        // state.theme.menu?.forEach((year) => {
+        //   console.log(year);
+        //   actions.source.fetch(year.link);
+        // });
       },
       // beforeCSR: async ({ actions }) => {
       //   console.log("BEFORE CSR");

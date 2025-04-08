@@ -50,6 +50,8 @@ const MenuYearBlock = ({ year, isOpen, currentUrl, actions, state }) => {
     }, []) // capture all slugs from expos/:year
     .find((slug) => slug === currentUrl[0]);
 
+  // console.log("posts", posts);
+
   return (
     <MenuYear id={year}>
       <Link

@@ -8,16 +8,21 @@ import MenuItem from "./MenuItem";
 
 const Menu = ({ state, actions, children }) => {
   // const app = useSelector((state) => state.appReducer);
-  const [currentUrl, setCurrentUrl] = useState(null);
-  const [portFolioLink, setPortfolioLink] = useState(null);
-  const [menuItemsByYear, setMenuItemsByYear] = useState([]);
-  const [pageId, setSetPageId] = useState([]);
-  // const location = useLocation();
+  // const [currentUrl, setCurrentUrl] = useState(null);
+  // const [portFolioLink, setPortfolioLink] = useState(null);
+  // const [menuItemsByYear, setMenuItemsByYear] = useState([]);
 
-  useEffect(() => {
-    const url = state.router.link?.split("/").filter((item) => item !== "");
-    setCurrentUrl(url);
-  }, [state.router.link]);
+  // const location = useLocation();
+  const portFolioLink = state.theme.portfolioLink;
+  const menuItemsByYear = state.theme.menu;
+  const currentUrl = state.router.link
+    ?.split("/")
+    .filter((item) => item !== "");
+
+  // useEffect(() => {
+  //   const url = state.router.link?.split("/").filter((item) => item !== "");
+  //   setCurrentUrl(url);
+  // }, [state.router.link]);
 
   useEffect(() => {
     if (!currentUrl) return;
@@ -39,39 +44,39 @@ const Menu = ({ state, actions, children }) => {
     }, 150);
   }, [currentUrl]);
 
-  useEffect(() => {
-    // set portfolio link hackish
-    const foundPortfolioPage = state.theme.articles.find(
-      (article) => article.slug === "portfolio-download"
-    );
-    if (foundPortfolioPage) {
-      var regex = /<a.*?href="(.*?)"/;
-      var src = regex.exec(foundPortfolioPage.content)[1];
-      if (src) {
-        setPortfolioLink(src);
-      }
-    }
-  }, [state.theme.articles]);
+  // useEffect(() => {
+  //   // set portfolio link hackish
+  //   const foundPortfolioPage = state.theme.articles.find(
+  //     (article) => article.slug === "portfolio-download"
+  //   );
+  //   if (foundPortfolioPage) {
+  //     var regex = /<a.*?href="(.*?)"/;
+  //     var src = regex.exec(foundPortfolioPage.content)[1];
+  //     if (src) {
+  //       setPortfolioLink(src);
+  //     }
+  //   }
+  // }, [state.theme.articles]);
 
   useEffect(() => {
-    const thisYear = new Date().getFullYear();
-    let sortedByYear = [];
-
-    for (let i = thisYear; i >= 2008; --i) {
-      const doesCategoryExcist = state.source.data[
-        "all-categories/"
-      ].items.find((item) => item.slug == i.toString());
-      console.log(i, i - 2008);
-      if (doesCategoryExcist)
-        sortedByYear[i - 2008] = {
-          year: i,
-          link: `/expos/${i}/`,
-          items: [],
-          data: [],
-        };
-    }
-    sortedByYear = sortedByYear.sort((a, b) => (a.year < b.year ? 1 : -1));
-    setMenuItemsByYear(sortedByYear);
+    // const thisYear = new Date().getFullYear();
+    // let sortedByYear = [];
+    // for (let i = thisYear; i >= 2008; --i) {
+    //   const doesCategoryExcist = state.source.data[
+    //     "all-categories/"
+    //   ].items.find((item) => item.slug == i.toString());
+    //   console.log(i, i - 2008);
+    //   if (doesCategoryExcist)
+    //     sortedByYear[i - 2008] = {
+    //       year: i,
+    //       link: `/expos/${i}/`,
+    //       items: [],
+    //       data: [],
+    //     };
+    // }
+    // sortedByYear = sortedByYear.sort((a, b) => (a.year < b.year ? 1 : -1));
+    // setMenuItemsByYear(sortedByYear);
+    // setMenuItemsByYear(state.theme.menu);
   }, []);
 
   const renderExpos = () => {
@@ -96,13 +101,14 @@ const Menu = ({ state, actions, children }) => {
     });
   };
 
-  if (!menuItemsByYear.length > 0) {
-    return (
-      <div className="Flex FlexCenterVertical">
-        <div className="Bold">Loading ..</div>
-      </div>
-    );
-  }
+  // if (!menuItemsByYear.length > 0 ) {
+  // if (currentUrl === null) {
+  //   return (
+  //     <div className="Flex FlexCenterVertical">
+  //       <div className="Bold">Loading ..</div>
+  //     </div>
+  //   );
+  // }
 
   return (
     <MenuWrap
@@ -115,6 +121,14 @@ const Menu = ({ state, actions, children }) => {
               slug={"news"}
               title={"News"}
               isOpen={currentUrl[0] === "news"}
+              children={children}
+            />
+          </li>
+          <li>
+            <MenuItem
+              slug={"bio"}
+              title={"Bio + Artist statement"}
+              isOpen={currentUrl[0] === "bio"}
               children={children}
             />
           </li>

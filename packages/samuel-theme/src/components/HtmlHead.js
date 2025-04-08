@@ -26,6 +26,7 @@ const HtmlHead = ({ state }) => {
           />
         );
     });
+    console.log(t);
     return t;
   };
   return (
@@ -34,9 +35,10 @@ const HtmlHead = ({ state }) => {
       <meta name="description" content={state.frontity.description} />
       <html lang="en" />
       <link rel="canonical" href={state.router.link} />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
 
       {/* {CreateMetaTags()} */}
-      {metatags?.map((link, index) => {
+      {/* {metatags?.map((link, index) => {
         if (link.tag == "title") {
           return <title key={index}>{link.content}</title>;
         } else if (link.tag == "meta") {
@@ -56,7 +58,7 @@ const HtmlHead = ({ state }) => {
               type={link.attributes.type}
             />
           );
-      })}
+      })} */}
     </Head>
   );
 };
