@@ -126,9 +126,9 @@ const Menu = ({ state, actions, children }) => {
           </li>
           <li>
             <MenuItem
-              slug={"bio"}
-              title={"Bio"}
-              isOpen={currentUrl[0] === "bio"}
+              slug={"about"}
+              title={"About"}
+              isOpen={currentUrl[0] === "about"}
               children={children}
             />
           </li>
